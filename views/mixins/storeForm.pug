@@ -1,0 +1,33 @@
+mixin storeForm(store = {})
+
+  form(action=`/add/${store._id || ''}` method="POST"  class="card" enctype="multipart/form-data")
+    .form-group
+      label(for="name") Name
+      input(type="text" name="name" class="form-control" value=store.name)
+    .form-group
+      label(for="description") Description
+      textarea( name="description" class="form-control")= store.description
+      label(for="photo") Photo 
+        input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
+      
+        if store.photo 
+          img(src=`/uploads/allsnaps/${store.photo}`, alt=store.name width=200) 
+      
+      label(for="audio") Audio
+        input(type="file" name="audio" id="audio" accept="audio/mp3, audio/mpeg, audio/mp4, audio/wave")
+          
+        if store.audio
+          audio
+            source(src=`/uploads/allsnaps/${store.audio}`, alt=store.name )
+          
+      - const choices = ['English Music', 'Bilen Music', 'Tigrinia Music', 'Tigre Music']
+      - const tags = store.tags || []
+    .form-group
+      ul.tags.form-check
+        each choice in choices
+          .tag
+            input(type="checkbox" id=choice value=choice class="form-check-input" name="tags" checked=( tags.includes(choice)) )
+            label(for=choice class="form-check-label") #{choice} 
+    input(type="submit" value="submit ->" class="btn btn-primary")
+    
+    

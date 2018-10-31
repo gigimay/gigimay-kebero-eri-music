@@ -1,0 +1,9 @@
+extends layout
+
+include mixins/storeForm
+
+block content
+  .container-fluid          
+    .jumbotron
+      h2= title
+      +storeForm(store)

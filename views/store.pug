@@ -1,0 +1,48 @@
+extends layout
+
+include mixins/reviewForm
+include mixins/review
+include mixins/musicCard
+
+
+block content
+  .container-fluid         
+    .jumbotron
+      .allboxes
+        .leftbox
+          .single
+            .single__hero(style=`background-image: url(/uploads/allsnaps/${store.photo || 'music.jpg'})`)
+              a(href="#").playproperty
+                img(src=`/uploads/allsnaps/play.png` data-value=`url(/uploads/allsnaps/${store.audio})`).playimage
+              div.audiocontrolbox
+                audio(controls='', autoplay='').audiocontrols
+                  source(src=`/uploads/allsnaps/${store.audio}`).audiosource
+          
+               
+              
+          .single__details.inner
+            p= store.description
+            if store.tags
+              ul.tags
+                each tag in store.tags
+                  li.tag
+                    a.tag__link(href=`/tags/${tag}`)
+                      span.tag__text ##{tag} 
+                      
+            if user
+              +reviewForm(store)
+            
+            if store.reviews 
+              .reviews 
+                each review in store.reviews
+                  .review
+                    +review(review) 
+        
+        .rightbox
+          .sideMusicStore
+            //- h.dump= eric
+            each store in allMusicInStorePage
+              +musicCard(store) 
+          
+                  
+    

@@ -1,0 +1,10 @@
+extends layout
+
+include mixins/loginForm
+include mixins/forgotForm
+
+block content
+  .container          
+    .jumbotron
+      +loginForm()
+      +forgotForm()

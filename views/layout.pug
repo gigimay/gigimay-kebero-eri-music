@@ -1,0 +1,69 @@
+doctype html
+html
+  head
+    title= `${title} | ${help.siteName}`
+    link(rel='stylesheet', href='/dist/style.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    block styles 
+      link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', rel='stylesheet')
+      link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+      
+  body
+    block header
+      .container-fluid
+        .navbar.navbar-default(role='navigation')
+            .container-fluid
+              .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/') Kebero-Eri-Music
+              .navbar-collapse.collapse
+                ul.nav.navbar-nav
+                  each item in help.menu
+                    li.active
+                      a(href=item.slug)
+                        span #{item.title}
+                form.navbar-form.navbar-left
+                  .form-group
+                    .search
+                      input.search__input.form-control(type="text" placeholder="Search your music ..." name="search" autocomplete="off")
+                      .search__results
+                
+                ul.nav.navbar-nav.navbar-right 
+                  if user
+                    //- li.active
+                    //-   a(href='/') Default
+                    li
+                      a(href='/Logout') Log Out
+                    li
+                      a(href='/Account' style="padding: 0;")
+                        img.avatar(src=user.gravatar + 'd=retro')
+                  else
+                    li
+                      a(href='/Register') Register
+                    li
+                      a(href='/Login') Log In
+    
+    block messages
+      if locals.flashes
+        .inner
+          .flash-messages
+            - const categories = Object.keys(locals.flashes)
+            each category in categories
+              each message in flashes[category]
+                .flash(class=`flash--${category}`)
+                  p.flash__text!= message
+                  button.flash__remove(onClick="this.parentElement.remove()") &times;
+                        
+    block content
+    
+    
+      
+    block scripts
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+      script(src="/dist/App.bundle.js")
+      

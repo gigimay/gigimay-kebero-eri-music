@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container          
+    .jumbotron
+      form.form(action="/register" method="POST")
+        h2= title
+        label(for="name") Name
+        input(type="text" name="name")
+        label(for="email") Email
+        input(type="email" name="email")
+        label(for="password") Password 
+        input(type="password" name="password")
+        label(for="confirm-password") Confirm Password 
+        input(type="password" name="confirm-password")
+        input.button(type="submit" value="Register -<")

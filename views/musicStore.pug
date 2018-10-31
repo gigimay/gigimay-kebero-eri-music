@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/musicCard
+include mixins/paginationCard
+
+block content
+  .container-fluid          
+    .jumbotron
+      h2.musicStoreTitle= title
+      .musicStore
+        each store in musicStore
+          +musicCard(store)
+      +paginationCard(page, pages, count)
+      

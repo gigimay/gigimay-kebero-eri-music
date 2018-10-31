@@ -1,0 +1,10 @@
+mixin paginationCard(page, pages, count)
+  .paginationCard
+    .paginationCard__prev
+      if page > 1
+        a(href=`/musicStore/page/${page - 1}`) Prev
+    .paginationCard__text
+      p Page #{page} of #{pages} - #{count} total results 
+    .paginationCard__next
+      if page < pages
+        a(href=`/musicStore/page/${parseFloat(page) + 1}`) Next
