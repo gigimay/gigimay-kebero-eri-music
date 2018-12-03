@@ -699,10 +699,13 @@ label {
   .store--wide {
     width: 100%; }
   .store__details {
-    padding: 1rem; }
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+   }
     .store__detailsp {
       line-height: 1.2;
-      margin-bottom: 10; }
+    }
   @media all and (max-width: 850px) {
     .store {
       width: calc(50% - 1.25em); } }
@@ -714,17 +717,17 @@ label {
   display: flex
 }
 .singer__name {
-  width: 50%;
+  width: 60%;
 }
 .store__actions {
   /* position: relative; */
   /* z-index: 2; */
   /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2);
+  /* box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2); */
   /* margin-bottom: 50px;
   padding-top: 10px;
   padding-bottom: 20px; */
-  width: 50%;
+  width: 40%;
   display: -ms-flexbox;
   display: flex;
   /* color: white; */
@@ -780,7 +783,8 @@ label {
     opacity: 0.1;
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); 
+  }
   .store__hero img {
     height: 100%;
     width: 100%;
